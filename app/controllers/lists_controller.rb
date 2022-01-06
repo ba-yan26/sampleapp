@@ -1,5 +1,16 @@
 class ListsController < ApplicationController
   def new
+    @list = List.new
+    # ビューへ渡すためのインスタンス変数に空のオブジェクトを生成する
+  end
+  
+  def create
+    list = List.new(list_params)
+    # データを受け取り新規登録するためのインスタンス作成
+    list.save
+    # データをデータベースに保存するためのsaveメソッド実行
+    redirect_to '/top'
+    
   end
 
   def index
@@ -10,4 +21,12 @@ class ListsController < ApplicationController
 
   def edit
   end
+  
+  
+  # 以下ストロングパラメーター
+  private
+  def list_params
+    params.require(:list).permit(:title,:body)
+  end
+  
 end
