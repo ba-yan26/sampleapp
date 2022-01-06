@@ -1,2 +1,13 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+<h1>新規投稿</h1>
+
+<%= form_with model:@list, local:true do |f| %>
+<!-- modelオプションを追加してListモデルの情報を入れる -->
+<!-- List.new→@listと定義することでListモデルの情報を元に新しくオブジェクトが作成される -->
+<!-- Listモデルにあるtitle,bodyが格納できるようになる -->
+    <h4>タイトル</h4>
+    <%= f.text_field :title %>
+    <!-- :titleはプロパティ。railsが自動的にtitleカラムと判別してくれて安全にデータベースに保存される -->
+    <h4>本文</h4>
+    <%= f.text_area :body %>
+    <%= f.submit '投稿' %>
+<% end %>
