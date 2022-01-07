@@ -12,5 +12,6 @@
     
     <h4>画像</h4>
     <%= f.file_field :image, accept:"image/*" %>
+    <!-- accept:"image/*"で投稿できるのを画像のみに絞る -->
     <%= f.submit '投稿' %>
 <% end %>
