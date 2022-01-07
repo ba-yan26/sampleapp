@@ -13,6 +13,11 @@ class ListsController < ApplicationController
       redirect_to list_path(@list.id)
     else
       render :new
+      # エラ〜メッセージを扱う際はrenderを活用する
+      # アクションに直接ページ遷移するので実行するアクションと遷移先の
+      # アクション内のインスタンス変数が同じでないと表示できない
+      # 元々新しいビューを必要としないcreate,uploadメソッドも同じインスタンス
+      # 変数を定義する必要が出て来る
     end
     
   end
