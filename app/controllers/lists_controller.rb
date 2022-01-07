@@ -9,7 +9,7 @@ class ListsController < ApplicationController
     # データを受け取り新規登録するためのインスタンス作成(ビューファイルへの引き渡しが必要ないのでローカル変数)
     list.save
     # データをデータベースに保存するためのsaveメソッド実行
-    redirect_to '/top'
+    redirect_to list_path(list.id)
     
   end
 
@@ -18,6 +18,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @list = List.find(params[:id])
   end
 
   def edit

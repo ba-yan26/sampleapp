@@ -2,9 +2,8 @@
 
 <% @lists.each do |list| %>
 <!-- eachメソッドで@listsを順番に取り出す。|list|に格納される -->
-
     <p>タイトル</p>
-    <span><%= list.title %></span>
+    <span><%= link_to list.title, list_path(list.id) %></span>
     <!-- listに格納されたtitleが表示される -->
-    
+    <!-- link_toで名前付きルートをlistでlist_pathを -->
 <% end %>
