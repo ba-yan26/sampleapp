@@ -5,11 +5,15 @@ class ListsController < ApplicationController
   end
   
   def create
-    list = List.new(list_params)
+    @list = List.new(list_params)
     # データを受け取り新規登録するためのインスタンス作成(ビューファイルへの引き渡しが必要ないのでローカル変数)
-    list.save
+    # 
+    if @list.save
     # データをデータベースに保存するためのsaveメソッド実行
-    redirect_to list_path(list.id)
+      redirect_to list_path(@list.id)
+    else
+      render :new
+    end
     
   end
 
@@ -28,9 +32,13 @@ class ListsController < ApplicationController
   
   def update
     # 編集した項目の更新アクション
-    list = List.find(params[:id])
-    list.update(list_params)
-    redirect_to list_path(list.id)
+    @list = List.find(params[:id])
+    if @list.update(list_params)
+      redirect_to list_path(@list.id)
+    else
+      render :edit
+    end
+      
   end
   
   def destroy
