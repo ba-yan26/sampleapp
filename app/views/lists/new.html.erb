@@ -1,6 +1,6 @@
 <h1>新規投稿</h1>
 
-<%= form_with model:@list, local:true do |f| %>
+<%= form_with model:@list, url:'/lists', method: :post, local:true do |f| %>
 <!-- modelオプションを追加してListモデルの情報を入れる -->
 <!-- List.new→@listと定義することでListモデルの情報を元に新しくオブジェクトが作成される -->
 <!-- Listモデルにあるtitle,bodyが格納できるようになる -->
