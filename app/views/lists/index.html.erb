@@ -6,4 +6,11 @@
     <span><%= link_to list.title, list_path(list.id) %></span>
     <!-- listに格納されたtitleが表示される -->
     <!-- link_toで名前付きルートをlistでlist_pathを -->
+    <p>画像</p>
+    <% if list.image.attached? %>
+    <!-- attached?はlist.imageが存在していればtrue,なければfalseを返す -->
+        <%= image_tag list.image, size:"200✖︎200"%>
+    <% else %>
+        <%= image_tag 'no_image', size:"200✖︎200"%>
+    <% end %>
 <% end %>
