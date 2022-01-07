@@ -6,7 +6,7 @@ class ListsController < ApplicationController
   
   def create
     list = List.new(list_params)
-    # データを受け取り新規登録するためのインスタンス作成
+    # データを受け取り新規登録するためのインスタンス作成(ビューファイルへの引き渡しが必要ないのでローカル変数)
     list.save
     # データをデータベースに保存するためのsaveメソッド実行
     redirect_to '/top'
@@ -14,6 +14,7 @@ class ListsController < ApplicationController
   end
 
   def index
+    @lists = List.all
   end
 
   def show
