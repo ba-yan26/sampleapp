@@ -33,6 +33,13 @@ class ListsController < ApplicationController
     redirect_to list_path(list.id)
   end
   
+  def destroy
+    # 削除アクション
+    list = List.find(params[:id])
+    list.destroy
+    redirect_to '/lists'
+  end
+  
   # 以下ストロングパラメーター
   private
   def list_params
